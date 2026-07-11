@@ -1,4 +1,4 @@
-# ShopEasy - Responsive Shopping Landing Page
+# Responsive Shopping Landing Page
 
 ## Description
 
