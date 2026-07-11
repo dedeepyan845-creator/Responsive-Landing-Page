@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ShopEasy - Shopping Landing Page</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f5f5f5;
+    color:#333;
+}
+
+
+
+.categories{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    width:250px;
+    margin:auto;
+    font-family: "Verdana", sans-serif;
+    font-size:26px;
+    font-weight:bold;
+}
+
+
+
+
+/*================ NAVIGATION ================*/
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 60px;
+    transition:.4s;
+    z-index:1000;
+}
+
+nav.scrolled{
+    background:#222;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
+}
+
+.logo{
+    color:white;
+    font-size:30px;
+    font-weight:bold;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+}
+
+nav ul li{
+    margin-left:20px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:5px;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    background:#ff9800;
+}
+
+nav ul li a.active{
+    background:#4CAF50;
+}
+
+/*================ HERO ================*/
+
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+    url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:60px;
+}
+
+.hero p{
+    margin:20px 0;
+    font-size:22px;
+}
+
+.btn{
+    display:inline-block;
+    background:#ff9800;
+    color:white;
+    padding:15px 35px;
+    text-decoration:none;
+    border-radius:30px;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#4CAF50;
+}
+
+
+
+
+/*================ GENERAL ================*/
+
+section{
+    padding:90px 8%;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:38px;
+}
+
+/*================ PRODUCTS ================*/
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    transition:.3s;
+    text-align:center;
+}
+
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.card h3{
+    margin-top:15px;
+}
+
+.price{
+    color:#ff5722;
+    font-size:22px;
+    margin:10px 0;
+}
+
+.card button{
+    margin:20px;
+    padding:12px 25px;
+    border:none;
+    background:#2196F3;
+    color:white;
+    cursor:pointer;
+    border-radius:5px;
+    transition:.3s;
+}
+
+.card button:hover{
+    background:#4CAF50;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+/*================ CATEGORIES ================*/
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.category{
+    background:#4CAF50;
+    color:white;
+    padding:40px;
+    text-align:center;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.category:hover{
+    background:#ff9800;
+    transform:scale(1.05);
+}
+
+/*================ OFFERS ================*/
+
+.offer{
+    background:#ff9800;
+    color:white;
+    padding:50px;
+    border-radius:10px;
+    text-align:center;
+}
+
+/*================ REVIEWS ================*/
+
+.reviews{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.review{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+}
+
+/*================ CONTACT ================*/
+
+.contact{
+    text-align:center;
+}
+
+.contact input,
+.contact textarea{
+    width:100%;
+    max-width:600px;
+    padding:15px;
+    margin:10px;
+}
+
+.contact button{
+    padding:15px 40px;
+    border:none;
+    background:#2196F3;
+    color:white;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.contact button:hover{
+    background:#4CAF50;
+}
+
+/*================ FOOTER ================*/
+
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/*================ MOBILE MENU ================*/
+
+.menu-toggle{
+    display:none;
+    font-size:30px;
+    color:white;
+    cursor:pointer;
+}
+
+@media(max-width:768px){
+
+.menu-toggle{
+display:block;
+}
+
+nav{
+padding:15px 25px;
+}
+
+nav ul{
+display:none;
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:#222;
+flex-direction:column;
+}
+
+nav ul.show{
+display:flex;
+}
+
+nav ul li{
+margin:20px;
+text-align:center;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav id="navbar">
+
+<div class="logo">ShopEasy</div>
+
+<div class="menu-toggle" id="menuBtn">
+☰
+</div>
+
+<ul id="menu">
+
+<li><a href="#home" class="active">Home</a></li>
+<li><a href="#products">Products</a></li>
+<li><a href="#categories">Categories</a></li>
+<li><a href="#offers">Offers</a></li>
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero" id="home">
+
+<div>
+
+<h1>Big Shopping Festival</h1>
+
+<p>Up to 70% OFF on Fashion, Electronics & Accessories</p>
+
+<a href="#products" class="btn">Shop Now</a>
+
+</div>
+
+</section>
+
+<section id="products">
+
+<h2>Featured Products</h2>
+
+<div class="products">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="Running Shoes">
+<h3>Running Shoes</h3>
+<p class="price">Rs.9000</p>
+<button>Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Smart Watch">
+<h3>Smart Watch</h3>
+<p class="price">Rs.3000</p>
+<button>Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Headphones">
+<h3>Headphones</h3>
+<p class="price">Rs.700</p>
+<button>Add to Cart</button>
+</div>
+
+</div>
+
+</section>
+
+<section id="categories">
+
+<h2>Shop by Category</h2>
+
+<div class="categories">
+
+    <div class="category">Fashion</div>
+    <div class="category">Electronics</div>
+    <div class="category">Furniture</div>
+    <div class="category">Beauty</div>
+    <div class="category">Home Appliances</div>
+
+</div>
+
+</section>
+
+<section id="offers">
+
+<h2>Special Offers</h2>
+
+<div class="offer">
+
+<h3>🔥 Buy 2 Get 1 Free</h3>
+
+<p>Free shipping on all orders above Rs.10,000</p>
+
+
+<h4>🔥 Buy 1 Get 1 Free </h4>
+
+<p>Free shipping on all orders above Rs.20,000</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Customer Reviews</h2>
+
+<div class="reviews">
+
+<div class="review">
+⭐⭐⭐⭐⭐
+<p>Excellent shopping experience!</p>
+</div>
+
+<div class="review">
+⭐⭐⭐⭐⭐
+<p>Fast delivery and amazing quality.</p>
+</div>
+
+<div class="review">
+⭐⭐⭐⭐☆
+<p>Great discounts and customer support.</p>
+</div>
+
+<div class="review">
+⭐⭐⭐⭐☆
+<p>Good quality.</p>
+</div>
+
+<div class="review">
+⭐⭐⭐⭐☆
+<p>reasonable prices and nice quality.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact Us</h2>
+
+<div class="contact">
+
+<input type="text" placeholder="Your Name">
+
+<input type="email" placeholder="Your Email">
+
+<textarea rows="5" placeholder="Message"></textarea>
+
+<br>
+
+<button>Send Message</button>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 ShopEasy | All Rights Reserved</p>
+
+</footer>
+
+<script>
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+if(window.scrollY > 50){
+
+navbar.classList.add("scrolled");
+
+}else{
+
+navbar.classList.remove("scrolled");
+
+}
+
+});
+
+const menuBtn=document.getElementById("menuBtn");
+const menu=document.getElementById("menu");
+
+menuBtn.onclick=function(){
+
+menu.classList.toggle("show");
+
+}
+
+document.querySelectorAll("nav a").forEach(link=>{
+
+link.onclick=function(){
+
+document.querySelectorAll("nav a").forEach(item=>item.classList.remove("active"));
+
+this.classList.add("active");
+
+menu.classList.remove("show");
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+
+ 
+
+
+
+
+
