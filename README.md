@@ -9,7 +9,6 @@ ShopEasy is a modern and responsive shopping landing page developed using HTML, 
 * Fully responsive design for all screen sizes
 * Fixed navigation bar with scroll effect
 * Mobile-friendly navigation menu
-* Attractive hero section with call-to-action button
 * Featured products with product cards and pricing
 * Shop by category section
 * Special offers and promotional banners
